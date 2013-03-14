@@ -1,6 +1,7 @@
 helpers do
   def current_user
     @user = User.find_by_remember_token(session[:remember_token])
+    @link = Url.all
   end
 
   def logged_in?
@@ -11,7 +12,7 @@ helpers do
     if session[:remember_token]
       redirect "/secret/#{@user.id}"
     else
-      erb :missing_page
+      erb '/'
     end
   end
 end

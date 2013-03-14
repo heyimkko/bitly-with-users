@@ -1,5 +1,6 @@
 require 'securerandom'
 require 'digest'
+
 class User < ActiveRecord::Base
   has_many :urls
   

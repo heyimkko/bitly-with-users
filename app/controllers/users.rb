@@ -12,6 +12,7 @@ end
 
 post '/login' do
   @user = User.find_by_email(params[:email])
+  # @urls = Url.find_by_user_id(params[:user_id]).first
   if @user.authenticate(params[:password])
     session[:remember_token] = @user.remember_token
     redirect "/secret/#{@user.id}"
@@ -24,22 +25,22 @@ post '/signup' do
   @user = User.new :email => params[:email],
                    :password => params[:password]
   if @user.save
-    redirect '/'
+    redirect "/secret/#{@user.id}"
   else
-    erb :signupfail
+    erb :missing_page
   end
 end
 
 get '/secret/:id' do
   if current_user
-    @urls = Url.where('user_id = ?', params[:id])
+    @urls = Url.where('user_id = ?', params[:id]).order("created_at DESC")
     erb :secretpage
   else
   redirect '/'
   end
 end
 
-get '/logout' do
+post '/logout' do
   session.clear
   redirect '/'
 end
