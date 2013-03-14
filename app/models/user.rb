@@ -1,7 +1,7 @@
 require 'securerandom'
 require 'digest'
 class User < ActiveRecord::Base
-
+  has_many :urls
   before_save :create_remember_token
   before_save :encrypt_password
 
