@@ -42,3 +42,46 @@
     <% end %>
   <% end %>
 </div>
+
+<!-- <div class="container">
+  <h1>Supreme URL Shortener </h1>
+<div class="signup">
+  <form method="post" action ="/signup">
+    Sign Up:<BR>
+    <input type="text"  name = "email" placeholder="email">
+    <BR>
+    <input type="password"  name="password" placeholder="password">
+    <BR>
+    <input type="submit" value="signup">
+  </form>
+</div>
+<div class="login">
+  <form method="post" action="/login">
+    Log In:<BR>
+    <input type="text"  name = "email" placeholder="email">
+    <BR>
+    <input type="password"  name="password" placeholder="password">
+    <BR>
+    <input type="submit" value="login">
+  </form>
+<BR>
+</div>
+<BR>
+<div class="shortener">
+  <form method="post" action="/urls">
+    <input type="text" name="long_url" placeholder="Input URL Here" required size="66">
+    <BR>
+    <BR>
+    <input type="submit" value="Convert!">
+  </form>
+</div>
+<BR>
+  <% @urls.each do |url| %>
+  <% if url.user_id.nil? %>
+    <li>
+      <%= url.long_url%> is now <a href='<%= url.short_url%>'> <%= url.short_url %> </a>  click count is now <%= url.click_count %>
+    </li>
+    <% end %>
+  <% end %>
+</div>
+ -->
