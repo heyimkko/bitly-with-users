@@ -25,8 +25,8 @@ post '/signup' do
   @user = User.new :email => params[:email],
                    :password => params[:password]
   if @user.save
-    redirect '/'
-    else
+    redirect "/secret/#{@user.id}"
+  else
     erb :missing_page
   end
 end
