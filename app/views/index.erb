@@ -34,5 +34,9 @@
 <BR>
 
 </div>
-
+  <% @urls.each do |url| %>
+    <li>
+      <%= url.long_url%> is now <a href='<%= url.short_url%>'> <%= url.short_url %> </a>  click count is now <%= url.click_count %>
+    </li>
+  <% end %>
 </div>

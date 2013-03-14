@@ -6,11 +6,13 @@ before ('/') do
 end
 
 get '/' do
+  @urls = Url.order("created_at DESC")
   erb :index
 end
 
 post '/login' do
   @user = User.find_by_email(params[:email])
+  # @urls = Url.find_by_user_id(params[:user_id]).first
   if @user.authenticate(params[:password])
     session[:remember_token] = @user.remember_token
     redirect "/secret/#{@user.id}"
@@ -31,6 +33,7 @@ end
 
 get '/secret/:id' do
   if current_user
+    @urls = Url.where('user_id = ?', params[:id])
     erb :secretpage
   else
   redirect '/'
